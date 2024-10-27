@@ -1,5 +1,6 @@
 
 
+PRG = hello
 SRC = src
 BUILD = build
 
@@ -15,13 +16,13 @@ $(BUILD):
 $(BUILD)/%.rel: $(SRC)/%.s $(BUILD)
 	sdasz80 -o $@ $<
 
-asm: $(ASMOBJS)
-
-main: asm
+$(BUILD)/$(PRG): $(SRC)/$(PRG).c $(ASMOBJS)
 	sdcc -mz80 --code-loc 0x0138 --data-loc 0 --no-std-crt0 \
 		$(ASMOBJS) \
-		src/hello.c \
-		-o build/hello
+		$(SRC)/$(PRG).c \
+		-o $(BUILD)/$(PRG)
+
+main: $(BUILD)/$(PRG) 
 
 format: format-c format-asm
 
