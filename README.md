@@ -19,3 +19,9 @@ brew install \
 make
 ```
 
+## Format the code
+
+```shell
+make format
+```
+
