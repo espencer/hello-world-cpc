@@ -23,6 +23,11 @@ main: asm
 		src/hello.c \
 		-o build/hello
 
+format: $(CFILES)
+	for f in $(CFILES) ; do \
+		clang-format -i $$f ; \
+	done
+
 clean:
 	rm -fR $(BUILD)
 

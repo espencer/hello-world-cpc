@@ -2,6 +2,6 @@
 
 int main() {
   printf("Hello world");
-  while(1) {};
+  while (1) {
+  };
 }
-

@@ -7,7 +7,9 @@ Simple CPC program, copied from http://www.cpcmania.com/Docs/Programming/Introdu
 Download dependencies for compiling:
 
 ```sh
-brew install sdcc
+brew install \
+    sdcc \
+    clang-format
 ```
 
 ## Compile
