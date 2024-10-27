@@ -23,9 +23,17 @@ main: asm
 		src/hello.c \
 		-o build/hello
 
-format: $(CFILES)
+format: format-c format-asm
+
+format-c: $(CFILES)
 	for f in $(CFILES) ; do \
 		clang-format -i $$f ; \
+	done
+
+format-asm: $(ASMFILES)
+	for f in $(ASMFILES) ; do \
+		cat $$f | sed 's/;;/\/\//g' | asmfmt | sed 's/\/\//;;/g' > $$f.tmp ; \
+		mv -f $$f.tmp $$f ; \
 	done
 
 clean:

@@ -9,7 +9,8 @@ Download dependencies for compiling:
 ```sh
 brew install \
     sdcc \
-    clang-format
+    clang-format \
+    asmfmt
 ```
 
 ## Compile
