@@ -18,36 +18,36 @@ jp   init
 
 init:
 
-	;; Stack at the top of memory.
-	;;  ld  sp,#0xffff
-	;;  I will use the Basic stack, so the program can return to basic!
+  ;; Stack at the top of memory.
+  ;;  ld  sp,#0xffff
+  ;;  I will use the Basic stack, so the program can return to basic!
 
-	;; Initialise global variables
-	call gsinit
-	call _main
-	jp   _exit
+  ;; Initialise global variables
+  call gsinit
+  call _main
+  jp   _exit
 
-	;; Ordering of segments for the linker.
-	.area _HOME
-	.area _CODE
-	.area _GSINIT
-	.area _GSFINAL
+  ;; Ordering of segments for the linker.
+  .area _HOME
+  .area _CODE
+  .area _GSINIT
+  .area _GSFINAL
 
-	.area _DATA
-	.area _BSS
-	.area _HEAP
+  .area _DATA
+  .area _BSS
+  .area _HEAP
 
-	.area _CODE
+  .area _CODE
 
 __clock::
-	ret
+  ret
 
 _exit::
-	ret
+  ret
 
 .area _GSINIT
 
 gsinit::
 
-	.area _GSFINAL
-	ret
+  .area _GSFINAL
+  ret

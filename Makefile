@@ -33,7 +33,12 @@ format-c: $(CFILES)
 
 format-asm: $(ASMFILES)
 	for f in $(ASMFILES) ; do \
-		cat $$f | sed 's/;;/\/\//g' | asmfmt | sed 's/\/\//;;/g' > $$f.tmp ; \
+		cat $$f \
+		| sed 's/;;/\/\//g' \
+		| asmfmt \
+		| sed 's/\/\//;;/g' \
+		| sed 's/^\t/  /g'\
+		> $$f.tmp ; \
 		mv -f $$f.tmp $$f ; \
 	done
 
